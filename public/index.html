@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayne Industries - Sistema de Operações e Segurança</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-page" class="page active">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1 class="login-title">WAYNE INDUSTRIES</h1>
+                    <p class="login-subtitle">Sistema de Operações e Segurança</p>
+                </div>
+                
+                <form id="login-form" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <button type="submit" class="login-button">Acessar Sistema</button>
+                    
+                    <div id="login-error" class="error-message" style="display: none;"></div>
+                    
+                    <div class="demo-credentials">
+                        <p><strong>Credenciais de Demonstração:</strong></p>
+                        <p>Admin: admin / admin123</p>
+                        <p>Gerente: gerente / gerente123</p>
+                        <p>Funcionário: funcionario / funcionario123</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard-page" class="page">
+        <div class="layout">
+            <header class="header">
+                <div class="header-content">
+                    <h1 class="header-title">WAYNE INDUSTRIES</h1>
+                    <div class="header-actions">
+                        <span id="user-info" class="user-info"></span>
+                        <button id="logout-btn" class="logout-button">Sair</button>
+                    </div>
+                </div>
+            </header>
+            
+            <nav class="nav">
+                <button class="nav-item active" data-page="dashboard">Dashboard</button>
+                <button class="nav-item" data-page="resources">Gestão de Recursos</button>
+            </nav>
+            
+            <main class="main">
+                <div class="dashboard-content">
+                    <h2 class="page-title">Dashboard de Operações</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total de Recursos</h3>
+                            <span id="total-resources" class="stat-value">0</span>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3>Recursos Ativos</h3>
+                            <span id="active-resources" class="stat-value">0</span>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3>Em Uso</h3>
+                            <span id="in-use-resources" class="stat-value">0</span>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3>Manutenção</h3>
+                            <span id="maintenance-resources" class="stat-value">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-sections">
+                        <div class="section">
+                            <h3>Recursos por Tipo</h3>
+                            <div id="resources-by-type" class="type-list"></div>
+                        </div>
+                        
+                        <div class="section">
+                            <h3>Próximas Manutenções</h3>
+                            <div id="upcoming-maintenance" class="maintenance-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Resources Page -->
+    <div id="resources-page" class="page">
+        <div class="layout">
+            <header class="header">
+                <div class="header-content">
+                    <h1 class="header-title">WAYNE INDUSTRIES</h1>
+                    <div class="header-actions">
+                        <span id="user-info-resources" class="user-info"></span>
+                        <button id="logout-btn-resources" class="logout-button">Sair</button>
+                    </div>
+                </div>
+            </header>
+            
+            <nav class="nav">
+                <button class="nav-item" data-page="dashboard">Dashboard</button>
+                <button class="nav-item active" data-page="resources">Gestão de Recursos</button>
+            </nav>
+            
+        <main class="main">
+            <div class="resources-content">
+                <div class="resources-header">
+                    <h2 class="page-title">Gestão de Recursos</h2>
+                    <button id="add-resource-btn" class="add-button">Adicionar Recurso</button>
+                </div>
+                
+                <div class="resources-table-container">
+                    <table class="resources-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Tipo</th>
+                                <th>Status</th>
+                                <th>Localização</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resources-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="resource-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Adicionar Recurso</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            
+            <form id="resource-form" class="resource-form">
+                <div class="form-group">
+                    <label for="resource-name">Nome</label>
+                    <input type="text" id="resource-name" name="name" required> </div>
+                
+                <div class="form-group">
+                    <label for="resource-type">Tipo</label>
+                    <select id="resource-type" name="type" required> <option value="">Selecione um tipo</option>
+                        <option value="equipamento">Equipamento</option>
+                        <option value="veiculo">Veículo</option>
+                        <option value="dispositivo_seguranca">Dispositivo de Segurança</option>
+                        <option value="ferramenta">Ferramenta</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resource-serial">Número de Série</label>
+                    <input type="text" id="resource-serial" name="serial_number"> </div>
+                
+                <div class="form-group">
+                    <label for="resource-plate">Placa</label>
+                    <input type="text" id="resource-plate" name="plate"> </div>
+                
+                <div class="form-group">
+                    <label for="resource-location">Localização</label>
+                    <input type="text" id="resource-location" name="location" required> </div>
+                
+                <div class="form-group">
+                    <label for="resource-status">Status</label>
+                    <select id="resource-status" name="status" required> <option value="disponivel">Disponível</option>
+                        <option value="em_uso">Em Uso</option>
+                        <option value="em_manutencao">Em Manutenção</option>
+                        <option value="ativo">Ativo</option> <option value="inativo">Inativo</option> </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resource-acquisition-date">Data de Aquisição</label>
+                    <input type="date" id="resource-acquisition-date" name="acquisition_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="resource-last-maintenance-date">Última Manutenção (opcional)</label>
+                    <input type="date" id="resource-last-maintenance-date" name="last_maintenance_date">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="cancel-button">Cancelar</button>
+                    <button type="submit" class="save-button">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmar Exclusão</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <p>Tem certeza que deseja excluir este recurso?</p>
+            <div class="form-actions">
+                <button type="button" class="cancel-button">Cancelar</button>
+                <button type="button" id="confirm-delete" class="delete-button">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script> </body>
+</body>
+</html>

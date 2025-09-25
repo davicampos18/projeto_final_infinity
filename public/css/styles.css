@@ -1,0 +1,566 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: hsl(240, 6%, 10%);
+    color: hsl(0, 0%, 98%);
+    line-height: 1.6;
+}
+
+/* Page System */
+.page {
+    display: none;
+    min-height: 100vh;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Login Page Styles */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.login-card {
+    background: hsl(240, 6%, 15%);
+    border: 1px solid hsl(240, 6%, 20%);
+    border-radius: 8px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(193, 100%, 70%);
+    margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+    color: hsl(0, 0%, 70%);
+    font-size: 0.875rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: hsl(0, 0%, 90%);
+    font-size: 0.875rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.75rem;
+    border: 1px solid hsl(240, 6%, 25%);
+    border-radius: 4px;
+    background: hsl(240, 6%, 10%);
+    color: hsl(0, 0%, 98%);
+    font-family: inherit;
+    font-size: 0.875rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: hsl(193, 100%, 70%);
+    box-shadow: 0 0 0 2px hsla(193, 100%, 70%, 0.2);
+}
+
+.login-button {
+    padding: 0.75rem;
+    background: hsl(193, 100%, 70%);
+    color: hsl(240, 6%, 10%);
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login-button:hover {
+    background: hsl(193, 100%, 60%);
+}
+
+.error-message {
+    color: hsl(0, 84%, 60%);
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 0.5rem;
+    background: hsla(0, 84%, 60%, 0.1);
+    border-radius: 4px;
+}
+
+.demo-credentials {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: hsl(240, 6%, 12%);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: hsl(0, 0%, 70%);
+}
+
+.demo-credentials p {
+    margin-bottom: 0.25rem;
+}
+
+/* Layout Styles */
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: hsl(240, 6%, 15%);
+    border-bottom: 1px solid hsl(240, 6%, 20%);
+    padding: 1rem 2rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: hsl(193, 100%, 70%);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info {
+    color: hsl(0, 0%, 70%);
+    font-size: 0.875rem;
+}
+
+.logout-button {
+    padding: 0.5rem 1rem;
+    background: hsl(0, 84%, 60%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+    background: hsl(0, 84%, 55%);
+}
+
+.nav {
+    background: hsl(240, 6%, 12%);
+    padding: 0 2rem;
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid hsl(240, 6%, 20%);
+}
+
+.nav-item {
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    color: hsl(0, 0%, 70%);
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-item:hover {
+    color: hsl(0, 0%, 90%);
+    background: hsl(240, 6%, 15%);
+}
+
+.nav-item.active {
+    color: hsl(193, 100%, 70%);
+    border-bottom-color: hsl(193, 100%, 70%);
+}
+
+.main {
+    flex: 1;
+    padding: 2rem;
+    background: hsl(240, 6%, 10%);
+}
+
+/* Dashboard Styles */
+.page-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: hsl(0, 0%, 98%);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: hsl(240, 6%, 15%);
+    border: 1px solid hsl(240, 6%, 20%);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 0.875rem;
+    color: hsl(0, 0%, 70%);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: hsl(193, 100%, 70%);
+}
+
+.dashboard-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.section {
+    background: hsl(240, 6%, 15%);
+    border: 1px solid hsl(240, 6%, 20%);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.section h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    color: hsl(0, 0%, 98%);
+}
+
+.type-list,
+.maintenance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.type-item,
+.maintenance-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: hsl(240, 6%, 12%);
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.type-count {
+    color: hsl(193, 100%, 70%);
+    font-weight: 600;
+}
+
+/* Resources Page Styles */
+.resources-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.add-button {
+    padding: 0.75rem 1.5rem;
+    background: hsl(142, 76%, 36%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-button:hover {
+    background: hsl(142, 76%, 32%);
+}
+
+.resources-table-container {
+    background: hsl(240, 6%, 15%);
+    border: 1px solid hsl(240, 6%, 20%);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.resources-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.resources-table th,
+.resources-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid hsl(240, 6%, 20%);
+}
+
+.resources-table th {
+    background: hsl(240, 6%, 12%);
+    font-weight: 600;
+    color: hsl(0, 0%, 90%);
+    font-size: 0.875rem;
+}
+
+.resources-table td {
+    font-size: 0.875rem;
+}
+
+.resources-table tr:hover {
+    background: hsl(240, 6%, 12%);
+}
+
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-ativo {
+    background: hsla(142, 76%, 36%, 0.2);
+    color: hsl(142, 76%, 60%);
+}
+
+.status-inativo {
+    background: hsla(0, 0%, 50%, 0.2);
+    color: hsl(0, 0%, 70%);
+}
+
+.status-em_uso {
+    background: hsla(193, 100%, 70%, 0.2);
+    color: hsl(193, 100%, 70%);
+}
+
+.status-em_manutencao {
+    background: hsla(45, 93%, 47%, 0.2);
+    color: hsl(45, 93%, 60%);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-button,
+.delete-button {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.edit-button {
+    background: hsl(45, 93%, 47%);
+    color: white;
+}
+
+.edit-button:hover {
+    background: hsl(45, 93%, 42%);
+}
+
+.delete-button {
+    background: hsl(0, 84%, 60%);
+    color: white;
+}
+
+.delete-button:hover {
+    background: hsl(0, 84%, 55%);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: hsl(240, 6%, 15%);
+    border: 1px solid hsl(240, 6%, 20%);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid hsl(240, 6%, 20%);
+}
+
+.modal-header h3 {
+    font-size: 1.125rem;
+    color: hsl(0, 0%, 98%);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: hsl(0, 0%, 70%);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: hsl(0, 0%, 90%);
+}
+
+.resource-form {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.cancel-button {
+    padding: 0.75rem 1.5rem;
+    background: hsl(240, 6%, 25%);
+    color: hsl(0, 0%, 90%);
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cancel-button:hover {
+    background: hsl(240, 6%, 30%);
+}
+
+.save-button {
+    padding: 0.75rem 1.5rem;
+    background: hsl(193, 100%, 70%);
+    color: hsl(240, 6%, 10%);
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.save-button:hover {
+    background: hsl(193, 100%, 60%);
+}
+
+/* Hidden class for role-based access */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .main {
+        padding: 1rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-sections {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .resources-table-container {
+        overflow-x: auto;
+    }
+    
+    .resources-table {
+        min-width: 600px;
+    }
+}
